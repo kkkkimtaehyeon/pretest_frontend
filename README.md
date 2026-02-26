@@ -8,6 +8,7 @@ npm install
 ```bash
 npm start
 ```
+4. http://localhost:3000 접속
 ---
 # 1. 상태 모델
 상태는 화면에서 렌더링을 해야하는가를 기준으로 나누어 모델링했습니다. <br>
