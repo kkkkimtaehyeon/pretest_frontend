@@ -12,8 +12,13 @@ const Timer = () => {
     } = useTime();
 
     const handleTimeInput = (type: 'h' | 'm' | 's', value: string) => {
-        const numValue = Math.max(0, parseInt(value) || 0);
+        let numValue = Math.max(0, parseInt(value) || 0);
 
+        if (type === 'm' || type === 's') {
+            numValue = Math.min(numValue, 59);
+        } else if (type === 'h') {
+            numValue = Math.min(numValue, 23);
+        }
         const newTimeH = type === 'h' ? numValue : inputTime.h;
         const newTimeM = type === 'm' ? numValue : inputTime.m;
         const newTimeS = type === 's' ? numValue : inputTime.s;
@@ -43,7 +48,7 @@ const Timer = () => {
                                     onChange={(e) => handleTimeInput('h', e.target.value)}
                                     min="0"
                                     className="text-center"
-                                    style={{ width: '50px' }}
+                                    style={{ width: '60px' }}
                                     placeholder="0"
                                 />
                                 <InputGroup.Text>시간</InputGroup.Text>
@@ -57,7 +62,7 @@ const Timer = () => {
                                     onChange={(e) => handleTimeInput('m', e.target.value)}
                                     min="0" max="59"
                                     className="text-center"
-                                    style={{ width: '50px' }}
+                                    style={{ width: '60px' }}
                                     placeholder="0"
                                 />
                                 <InputGroup.Text>분</InputGroup.Text>
@@ -71,7 +76,7 @@ const Timer = () => {
                                     onChange={(e) => handleTimeInput('s', e.target.value)}
                                     min="0" max="59"
                                     className="text-center"
-                                    style={{ width: '50px' }}
+                                    style={{ width: '60px' }}
                                     placeholder="0"
                                 />
                                 <InputGroup.Text>초</InputGroup.Text>
