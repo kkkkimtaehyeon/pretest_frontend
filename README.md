@@ -1,6 +1,9 @@
 # 실행 방법
 1. 프로젝트 클론
-2. 의존성 설치
+2. npm 설치
+```bash
+npm install
+```
 3. react 앱 실행
 ```bash
 npm start
