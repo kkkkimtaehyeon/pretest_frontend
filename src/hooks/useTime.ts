@@ -10,7 +10,6 @@ export const useTime = () => {
         s: 0,
     });
     const targetTimeRef = useRef<number>(0);
-
     const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
     const startTimeRef = useRef<number>(0);   // 가장 최근 start 시각
     const accumulatedTimeRef = useRef<number>(0); //  누적 시간
@@ -43,7 +42,6 @@ export const useTime = () => {
     const stopwatchStart = () => {
         if (status !== 'RUNNING') {
             startTimeRef.current = performance.now();
-            // 100ms 마다 실제경과시간 계산
             intervalRef.current = setInterval(() => {
                 const elapsedMs = performance.now() - startTimeRef.current + accumulatedTimeRef.current;
                 setTime(elapsedMs);
